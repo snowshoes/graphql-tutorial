@@ -1,5 +1,5 @@
-import { makeExecutableSchema, addMockFunctionsToSchema } from "graphql-tools";
-import { resolvers } from "./resolvers";
+import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
+import { resolvers } from './resolvers';
 
 const typeDefs = `
   type Channel {
