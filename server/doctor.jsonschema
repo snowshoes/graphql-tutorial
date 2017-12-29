@@ -1,0 +1,111 @@
+{
+  "type": "object",
+  "properties": {
+    "username": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    },
+    "address": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "MAIN"
+              ]
+            },
+            "streetName": {
+              "type": "string"
+            },
+            "streetNumber": {
+              "type": "string"
+            },
+            "floor": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "postCode": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "city",
+            "country",
+            "postCode"
+          ]
+        }
+      ]
+    },
+    "email": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "phone": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "countryCode": {
+            "type": "string"
+          },
+          "number": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "WORK"
+            ]
+          }
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "avatar": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "firstName",
+        "lastName",
+        "gender"
+      ]
+    }
+  },
+  "required": [
+    "email",
+    "address",
+    "phone",
+    "profile",
+    "password"
+  ],
+  "title": "Doctor Form"
+}

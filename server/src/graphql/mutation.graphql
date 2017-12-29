@@ -1,0 +1,28 @@
+mutation SignupMutation($user: SignupUserInput!) {
+  singupUser(input: $user) {
+    id
+    username
+    addresses {
+      type
+      streetName
+      streetNumber
+      floor
+      city
+      country
+      postCode
+    }
+    emails
+    phones {
+      countryCode
+      number
+      type
+    }
+    profile {
+      title
+      firstName
+      lastName
+      avatar
+      gender
+    }
+  }
+}
