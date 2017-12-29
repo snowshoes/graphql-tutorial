@@ -9,7 +9,7 @@ const channels = [
   }
 ];
 let nextId = 3;
-const resolvers = {
+export const resolvers = {
   Query: {
     channels: () => {
       return channels;
@@ -23,5 +23,3 @@ const resolvers = {
     }
   }
 };
-
-export default resolvers;
