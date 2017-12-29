@@ -1,7 +1,13 @@
-import { makeExecutableSchema } from 'graphql-tools';
-import { resolvers } from './docResolvers';
+enum PhoneNumberType {
+  WORK
+  HOME
+}
 
-const typeDefs = `
+enum AddressType {
+  MAIN
+  SUBS
+}
+
 type Query {
   loginUser(input: LoginUserInput!): LoginUserPayload
 }
@@ -38,8 +44,3 @@ type SignupUserPayload {
   # nullable for same reason as before
   user: User
 }
-`;
-
-const schema = makeExecutableSchema({ typeDefs, resolvers });
-
-export default schema;

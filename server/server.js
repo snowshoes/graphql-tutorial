@@ -24,6 +24,10 @@ server.use(
   })
 );
 
+server.use('/', (req, res) => {
+  res.json('address to /graphiql to test your queries and mutation');
+});
+
 server.listen(PORT, () => {
   console.log(`GraphQL server now is running on http://localhost:${PORT}`);
 });
