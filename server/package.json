@@ -10,6 +10,7 @@
   "author": "snowshoes",
   "license": "MIT",
   "devDependencies": {
+    "@types/mongoose": "^4.7.31",
     "babel-cli": "^6.24.0",
     "babel-eslint": "^8.0.3",
     "babel-preset-es2015": "^6.24.0",
@@ -25,12 +26,15 @@
     "prettier": "^1.9.2"
   },
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.15.2",
     "graphql": "^0.12.3",
     "graphql-server-express": "^1.3.2",
     "graphql-tools": "^2.14.1",
+    "jsonwebtoken": "^8.1.0",
+    "lodash": "^4.17.4",
     "mongoose": "^4.10.8",
     "uuid": "^3.1.0"
   }

@@ -3,10 +3,10 @@ import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import schema from './src/docSchema';
-import Cat from './src/models/cat';
-import User from './src/models/user';
+import UserModel from './src/models/user';
 
 const PORT = 4000;
+const SECRET = 'aStringUsedToCreateJsonWebToken';
 const server = express();
 
 server.use('*', cors({ origin: 'http://localhost:3000' }));
@@ -16,7 +16,7 @@ server.use(
   bodyParser.json(),
   graphqlExpress({
     schema,
-    context: { User }
+    context: { UserModel }
   })
 );
 

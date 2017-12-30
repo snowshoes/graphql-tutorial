@@ -42,3 +42,13 @@ mutation {
     password
   }
 }
+
+mutation {
+  register(
+    input: { username: "Jackie", email: "jackie@gmail.com", password: "123" }
+  ) {
+    id
+    username
+    email
+  }
+}

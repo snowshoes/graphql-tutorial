@@ -7,14 +7,16 @@ type Query {
 }
 
 type Mutation {
-  signupUser(input: SignupUserInput!): User
+  # signupUser(input: SignupUserInput!): User
+  register(input: RegisterInput!): User!
+  # login(input: LoginInput): String! # return JsonWebToken
 }
 
 # Basic Types
 type User {
   id: ID! # unique & required
-  username: String!
-  password: String!
+  username: String
+  email: String!
 }
 
 # Input Types
@@ -25,6 +27,17 @@ input LoginUserInput {
 
 input SignupUserInput {
   username: String!
+  password: String!
+}
+
+input RegisterInput {
+  username: String
+  email: String!
+  password: String!
+}
+
+input LoginInput {
+  email: String!
   password: String!
 }
 `;
