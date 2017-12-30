@@ -2,7 +2,9 @@ import express from 'express';
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import { schema } from './src/docSchema';
+import schema from './src/docSchema';
+import Cat from './src/models/cat';
+import User from './src/models/user';
 
 const PORT = 4000;
 const server = express();
@@ -13,7 +15,8 @@ server.use(
   '/graphql',
   bodyParser.json(),
   graphqlExpress({
-    schema
+    schema,
+    context: { User }
   })
 );
 

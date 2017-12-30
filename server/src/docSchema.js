@@ -1,13 +1,13 @@
 import { makeExecutableSchema } from 'graphql-tools';
-import { resolvers } from './docResolvers';
+import resolvers from './docResolvers';
 
 const typeDefs = `
 type Query {
-  loginUser(input: LoginUserInput!): LoginUserPayload
+  loginUser(input: LoginUserInput!): User
 }
 
 type Mutation {
-  singupUser(input: SignupUserInput!): SignupUserPayload
+  signupUser(input: SignupUserInput!): User
 }
 
 # Basic Types
@@ -24,19 +24,8 @@ input LoginUserInput {
 }
 
 input SignupUserInput {
-  user: User!
-}
-
-# Custom Payload Types
-type LoginUserPayload {
-  # nullable if there is an error
-  # then null won't propagate to user
-  user: User
-}
-
-type SignupUserPayload {
-  # nullable for same reason as before
-  user: User
+  username: String!
+  password: String!
 }
 `;
 

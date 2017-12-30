@@ -26,3 +26,19 @@ mutation SignupMutation($user: SignupUserInput!) {
     }
   }
 }
+
+mutation {
+  createCat(input: { name: "kitty", age: 2 }) {
+    id
+    name
+    age
+  }
+}
+
+mutation {
+  singupUser(input: { username: "James", password: "Bond" }) {
+    id
+    username
+    password
+  }
+}

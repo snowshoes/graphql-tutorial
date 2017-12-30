@@ -1,0 +1,23 @@
+query {
+  allCats {
+    id
+    name
+    age
+  }
+}
+
+query {
+  loginUser(input: { username: "Jackie", password: "Chen" }) {
+    id
+    username
+    password
+  }
+}
+
+query {
+  allUsers {
+    id
+    username
+    password
+  }
+}
