@@ -9,7 +9,7 @@ type Query {
 type Mutation {
   # signupUser(input: SignupUserInput!): User
   register(input: RegisterInput!): User!
-  # login(input: LoginInput): String! # return JsonWebToken
+  login(input: LoginInput!): User
 }
 
 # Basic Types
