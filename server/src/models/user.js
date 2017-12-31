@@ -1,4 +1,5 @@
 import mongoose from '../db/connectors';
+import Phone from './phone';
 
 const userSchema = mongoose.Schema(
   {
@@ -9,7 +10,10 @@ const userSchema = mongoose.Schema(
       index: true,
       unique: true
     },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    // /!\ order matters! 1.ref 2.type
+    // https://stackoverflow.com/questions/26511604/adding-field-in-mongoose-plugin-gives-typeerror-invalid-value-for-schema-path
+    phones: [{ ref: 'Phone', type: mongoose.Schema.Types.ObjectId }]
   },
   {
     timestamps: {
@@ -23,7 +27,7 @@ const userSchema = mongoose.Schema(
 userSchema.path('email').validate({
   isAsync: true,
   validator(value, respond) {
-    this.model('user').count({ email: value }, (err, count) => {
+    this.model('User').count({ email: value }, (err, count) => {
       if (err) {
         return respond(err);
       }
@@ -33,6 +37,6 @@ userSchema.path('email').validate({
   message: 'Email already exists'
 });
 
-const userModel = mongoose.model('user', userSchema);
+const User = mongoose.model('User', userSchema, 'users');
 
-export default userModel;
+export default User;

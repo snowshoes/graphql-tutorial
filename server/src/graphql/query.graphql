@@ -13,11 +13,3 @@ query {
     password
   }
 }
-
-query {
-  allUsers {
-    id
-    username
-    password
-  }
-}

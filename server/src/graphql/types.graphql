@@ -9,16 +9,16 @@ enum AddressType {
 }
 
 schema {
-  query: LoginQuery
-  mutation: SignupMutation
+  query: Query
+  mutation: Mutation
 }
 
-type LoginQuery {
-  loginUser(input: LoginUserInput!): LoginUserPayload
+type Query {
+  login(input: LoginInput!): User
 }
 
-type SignupMutation {
-  singupUser(input: SignupUserInput!): SignupUserPayload
+type Mutation {
+  register(input: RegisterInput!): User!
 }
 
 # Basic Types
@@ -60,23 +60,20 @@ type Address {
 }
 
 # Input Types
-input LoginUserInput {
+input LoginInput {
   email: Email!
   password: String!
 }
 
-input SignupUserInput {
-  user: User!
+input RegisterInput {
+  username: String
+  email: String!
+  password: String!
+  phones: [PhoneInput]!
 }
 
-# Custom Payload Types
-type LoginUserPayload {
-  # nullable if there is an error
-  # then null won't propagate to user
-  user: User
-}
-
-type SignupUserPayload {
-  # nullable for same reason as before
-  user: User
+input PhoneInput {
+  countryCode: String!
+  number: String!
+  phonetype: PhoneNumberType!
 }

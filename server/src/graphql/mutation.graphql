@@ -43,9 +43,18 @@ mutation {
   }
 }
 
+// prettier-ignore
 mutation {
   register(
-    input: { username: "Jackie", email: "jackie@gmail.com", password: "123" }
+    input: {
+      username: "Bruce",
+      email: "lbruce@gmail.com",
+      password: "12345",
+      phones: [
+        { countryCode: "+33", number: "0612345678", phonetype: WORK }
+        { countryCode: "+34", number: "0634567890", phonetype: HOME }
+      ]
+    }
   ) {
     id
     username
@@ -58,5 +67,18 @@ mutation {
     id
     email
     username
+  }
+}
+
+mutation {
+  login(input: { email: "jackie@gmail.com", password: "123" }) {
+    id
+    email
+    username
+    phones {
+      countryCode
+      number
+      phonetype
+    }
   }
 }
