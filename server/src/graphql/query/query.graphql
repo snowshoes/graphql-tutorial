@@ -1,0 +1,20 @@
+query {
+  allCats {
+    id
+    name
+    age
+  }
+}
+
+query {
+  login(input: { email: "test4@gmail.com", password: "12345" }) {
+    id
+    email
+    username
+    phones {
+      countryCode
+      number
+      phonetype
+    }
+  }
+}

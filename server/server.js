@@ -3,7 +3,8 @@ import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import uuidv4 from 'uuid/v4';
-import schema from './src/docSchema';
+// import schema from './src/docSchema';
+import schema from './src/graphql/schema';
 import User from './src/models/user';
 import Phone from './src/models/phone';
 

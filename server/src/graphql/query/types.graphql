@@ -50,7 +50,7 @@ type Profile {
 
 type Address {
   id: ID!
-  type: AddressType!
+  atype: AddressType!
   streetName: String
   streetNumber: String
   floor: String
