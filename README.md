@@ -2,6 +2,17 @@
 
 Simple Register and Login Demo using GraphQL with Apollo, Mongoose and Express
 
+### Install
+
+```
+cd server
+npm install
+npm start
+```
+
+then go to `localhost:4000/graphiql` to call graphql API
+make sure mongodb is running and `user` database exists before any query or mutation
+
 ### Functionalities
 
 1. User register
