@@ -1,47 +1,4 @@
 query {
-  allCats {
-    id
-    name
-    age
-  }
-}
-
-query {
-  login(input: { email: "test4@gmail.com", password: "12345" }) {
-    id
-    email
-    username
-    phones {
-      countryCode
-      number
-      phonetype
-    }
-  }
-}
-
-query {
-  login(input: { email: "t6@gmail.com", password: "12345" }) {
-    id
-    email
-    username
-    phones {
-      countryCode
-      number
-      phonetype
-    }
-    addresses {
-      atype
-      streetName
-      streetNumber
-      floor
-      city
-      country
-      postCode
-    }
-  }
-}
-
-query {
   login(input: { email: "t6@gmail.com", password: "12345" }) {
     id
     email

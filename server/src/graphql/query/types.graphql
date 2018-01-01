@@ -33,14 +33,12 @@ type User {
 }
 
 type Phone {
-  id: ID!
   countryCode: String!
   number: String!
   type: PhoneNumberType!
 }
 
 type Profile {
-  id: ID!
   title: String!
   firstName: String!
   lastName: String!
@@ -49,7 +47,6 @@ type Profile {
 }
 
 type Address {
-  id: ID!
   atype: AddressType!
   streetName: String
   streetNumber: String

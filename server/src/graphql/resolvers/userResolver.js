@@ -38,6 +38,12 @@ const resolvers = {
       let { password } = input;
       password = await bcrypt.hash(password, 12);
 
+      // check if user already exsited
+      const user = await User.findOne({ email });
+      if (user) {
+        throw new Error('Email has already been registered');
+      }
+
       // save phones
       const phoneIds = await Promise.all(
         phones.map(async ({ countryCode, number, phonetype }) => {
