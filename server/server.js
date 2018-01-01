@@ -4,10 +4,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import uuidv4 from 'uuid/v4';
 import schema from './src/graphql/schema';
-import User from './src/models/user';
-import Phone from './src/models/phone';
-import Address from './src/models/address';
-import Profile from './src/models/profile';
+import Models from './src/models';
 
 const PORT = 4000;
 const SECRET = uuidv4();
@@ -21,10 +18,7 @@ server.use(
   graphqlExpress({
     schema,
     context: {
-      User,
-      Phone,
-      Address,
-      Profile
+      Models
     }
   })
 );

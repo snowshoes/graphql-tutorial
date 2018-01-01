@@ -2,8 +2,9 @@ import bcrypt from 'bcrypt';
 
 const resolvers = {
   Query: {
-    login: async (root, { input }, { User, Phone, Address, Profile }) => {
+    login: async (root, { input }, { Models }) => {
       const { email, password } = input;
+      const { User, Phone, Address, Profile } = Models;
       const user = await User.findOne({ email })
         .populate({
           path: 'phones',
@@ -31,47 +32,49 @@ const resolvers = {
     }
   },
   Mutation: {
-    register: async (root, { input }, { User, Phone, Address, Profile }) => {
+    register: async (root, { input }, { Models }) => {
       const { username, email, phones, addresses, profile } = input;
+      const { User, Phone, Address, Profile } = Models;
       let { password } = input;
       password = await bcrypt.hash(password, 12);
+
       // save phones
-      // prettier-ignore
-      const phoneIds = await Promise.all(phones.map(async ({
-        countryCode,
-        number,
-        phonetype
-      }) => {
-        const phone = await new Phone({
-          countryCode,
-          number,
-          phonetype
-        }).save();
-        return phone.id;
-      }));
+      const phoneIds = await Promise.all(
+        phones.map(async ({ countryCode, number, phonetype }) => {
+          const phone = await new Phone({
+            countryCode,
+            number,
+            phonetype
+          }).save();
+          return phone.id;
+        })
+      );
 
       // save addresses
-      // prettier-ignore
-      const addrIds = await Promise.all(addresses.map(async ({
-        atype,
-        streetName,
-        streetNumber,
-        floor,
-        city,
-        country,
-        postCode
-      }) => {
-        const address = await new Address({
-          atype,
-          streetName,
-          streetNumber,
-          floor,
-          city,
-          country,
-          postCode
-        }).save();
-        return address.id;
-      }));
+      const addrIds = await Promise.all(
+        addresses.map(
+          async ({
+            atype,
+            streetName,
+            streetNumber,
+            floor,
+            city,
+            country,
+            postCode
+          }) => {
+            const address = await new Address({
+              atype,
+              streetName,
+              streetNumber,
+              floor,
+              city,
+              country,
+              postCode
+            }).save();
+            return address.id;
+          }
+        )
+      );
 
       // save profile
       const { title, firstName, lastName, avatar, gender } = profile;
