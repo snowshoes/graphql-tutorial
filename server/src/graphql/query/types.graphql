@@ -77,3 +77,21 @@ input PhoneInput {
   number: String!
   phonetype: PhoneNumberType!
 }
+
+input AddressInput {
+  atype: AddressType!
+  streetName: String
+  streetNumber: String
+  floor: String
+  city: String!
+  country: String!
+  postCode: String!
+}
+
+input ProfileInput {
+  title: String!
+  firstName: String!
+  lastName: String!
+  avatar: String
+  gender: String
+}

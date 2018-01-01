@@ -8,12 +8,30 @@ const addrSchema = mongoose.Schema(
       default: 'MAIN',
       required: true
     },
-    streetName: { type: String, required: false },
-    streetNumber: { type: String, required: false },
-    floor: { type: String, required: false },
-    city: { type: String, required: true },
-    country: { type: String, required: true },
-    postCode: { type: String, required: true }
+    streetName: {
+      type: String,
+      required: false
+    },
+    streetNumber: {
+      type: String,
+      required: false
+    },
+    floor: {
+      type: String,
+      required: false
+    },
+    city: {
+      type: String,
+      required: true
+    },
+    country: {
+      type: String,
+      required: true
+    },
+    postCode: {
+      type: String,
+      required: true
+    }
   },
   {
     timestamps: {

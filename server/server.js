@@ -3,11 +3,11 @@ import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import uuidv4 from 'uuid/v4';
-// import schema from './src/docSchema';
 import schema from './src/graphql/schema';
 import User from './src/models/user';
 import Phone from './src/models/phone';
 import Address from './src/models/address';
+import Profile from './src/models/profile';
 
 const PORT = 4000;
 const SECRET = uuidv4();
@@ -20,16 +20,16 @@ server.use(
   bodyParser.json(),
   graphqlExpress({
     schema,
-    context: { User, Phone, Address }
+    context: {
+      User,
+      Phone,
+      Address,
+      Profile
+    }
   })
 );
 
-server.use(
-  '/graphiql',
-  graphiqlExpress({
-    endpointURL: '/graphql'
-  })
-);
+server.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
 server.use('/', (req, res) => {
   res.json('address to /graphiql to test your queries and mutation');

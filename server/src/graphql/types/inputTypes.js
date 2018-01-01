@@ -5,6 +5,7 @@ export default `
     password: String!
     addresses: [AddressInput]!
     phones: [PhoneInput]!
+    profile: ProfileInput!
   }
 
   input LoginInput {
@@ -26,5 +27,13 @@ export default `
     city: String!
     country: String!
     postCode: String!
+  }
+
+  input ProfileInput {
+    title: String!
+    firstName: String!
+    lastName: String!
+    avatar: String
+    gender: String
   }
 `;

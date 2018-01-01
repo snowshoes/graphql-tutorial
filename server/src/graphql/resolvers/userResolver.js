@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 
 const resolvers = {
   Query: {
-    login: async (root, { input }, { User, Phone, Address }) => {
+    login: async (root, { input }, { User, Phone, Address, Profile }) => {
       const { email, password } = input;
       const user = await User.findOne({ email })
         .populate({
@@ -12,6 +12,10 @@ const resolvers = {
         .populate({
           path: 'addresses',
           model: Address
+        })
+        .populate({
+          path: 'profile',
+          model: Profile
         });
       console.log(user);
       if (!user) {
@@ -27,8 +31,8 @@ const resolvers = {
     }
   },
   Mutation: {
-    register: async (root, { input }, { User, Phone, Address }) => {
-      const { username, email, phones, addresses } = input;
+    register: async (root, { input }, { User, Phone, Address, Profile }) => {
+      const { username, email, phones, addresses, profile } = input;
       let { password } = input;
       password = await bcrypt.hash(password, 12);
       // save phones
@@ -69,13 +73,24 @@ const resolvers = {
         return address.id;
       }));
 
+      // save profile
+      const { title, firstName, lastName, avatar, gender } = profile;
+      const aProfile = await new Profile({
+        title,
+        firstName,
+        lastName,
+        avatar,
+        gender
+      }).save();
+
       // save user
       const registered = await new User({
         username,
         email,
         password,
         phones: phoneIds,
-        addresses: addrIds
+        addresses: addrIds,
+        profile: aProfile.id
       }).save();
       return registered;
     }

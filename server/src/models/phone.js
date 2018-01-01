@@ -2,8 +2,14 @@ import mongoose from '../db/connectors';
 
 const phoneSchema = mongoose.Schema(
   {
-    countryCode: { type: String, required: true },
-    number: { type: String, required: true },
+    countryCode: {
+      type: String,
+      required: true
+    },
+    number: {
+      type: String,
+      required: true
+    },
     phonetype: {
       type: String,
       enum: ['WORK', 'HOME'],

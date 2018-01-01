@@ -13,5 +13,6 @@ export default `
     email: String!
     phones: [Phone]!
     addresses: [Address]!
+    profile: Profile!
   }
 `;

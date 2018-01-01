@@ -40,3 +40,32 @@ query {
     }
   }
 }
+
+query {
+  login(input: { email: "t6@gmail.com", password: "12345" }) {
+    id
+    email
+    username
+    phones {
+      countryCode
+      number
+      phonetype
+    }
+    addresses {
+      atype
+      streetName
+      streetNumber
+      floor
+      city
+      country
+      postCode
+    }
+    profile {
+      title
+      firstName
+      lastName
+      avatar
+      gender
+    }
+  }
+}
