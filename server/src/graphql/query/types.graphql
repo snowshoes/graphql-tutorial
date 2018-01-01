@@ -1,6 +1,3 @@
-import { makeExecutableSchema } from 'graphql-tools';
-
-const typeDefs = `
 enum PhoneNumberType {
   WORK
   HOME
@@ -12,16 +9,16 @@ enum AddressType {
 }
 
 schema {
-  query: LoginQuery
-  mutation: SignupMutation
+  query: Query
+  mutation: Mutation
 }
 
-type LoginQuery {
-  loginUser(input: LoginUserInput!): LoginUserPayload
+type Query {
+  login(input: LoginInput!): User
 }
 
-type SignupMutation {
-  singupUser(input: SignupUserInput!): SignupUserPayload
+type Mutation {
+  register(input: RegisterInput!): User!
 }
 
 # Basic Types
@@ -36,14 +33,12 @@ type User {
 }
 
 type Phone {
-  id: ID!
   countryCode: String!
   number: String!
   type: PhoneNumberType!
 }
 
 type Profile {
-  id: ID!
   title: String!
   firstName: String!
   lastName: String!
@@ -52,8 +47,7 @@ type Profile {
 }
 
 type Address {
-  id: ID!
-  type: AddressType!
+  atype: AddressType!
   streetName: String
   streetNumber: String
   floor: String
@@ -63,24 +57,38 @@ type Address {
 }
 
 # Input Types
-input LoginUserInput {
+input LoginInput {
   email: Email!
   password: String!
 }
 
-input SignupUserInput {
-  user: User!
+input RegisterInput {
+  username: String
+  email: String!
+  password: String!
+  phones: [PhoneInput]!
 }
 
-# Custom Payload Types
-type LoginUserPayload {
-  # nullable if there is an error
-  # then null won't propagate to user
-  user: User
+input PhoneInput {
+  countryCode: String!
+  number: String!
+  phonetype: PhoneNumberType!
 }
 
-type SignupUserPayload {
-  # nullable for same reason as before
-  user: User
+input AddressInput {
+  atype: AddressType!
+  streetName: String
+  streetNumber: String
+  floor: String
+  city: String!
+  country: String!
+  postCode: String!
 }
-`;
+
+input ProfileInput {
+  title: String!
+  firstName: String!
+  lastName: String!
+  avatar: String
+  gender: String
+}

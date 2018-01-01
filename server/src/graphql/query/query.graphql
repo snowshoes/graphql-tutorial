@@ -1,21 +1,21 @@
-mutation SignupMutation($user: SignupUserInput!) {
-  singupUser(input: $user) {
+query {
+  login(input: { email: "t6@gmail.com", password: "12345" }) {
     id
+    email
     username
+    phones {
+      countryCode
+      number
+      phonetype
+    }
     addresses {
-      type
+      atype
       streetName
       streetNumber
       floor
       city
       country
       postCode
-    }
-    emails
-    phones {
-      countryCode
-      number
-      type
     }
     profile {
       title

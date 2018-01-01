@@ -1,0 +1,75 @@
+mutation ($user: SignupUserInput!) {
+  singupUser(input: $user) {
+    id
+    username
+    addresses {
+      type
+      streetName
+      streetNumber
+      floor
+      city
+      country
+      postCode
+    }
+    emails
+    phones {
+      countryCode
+      number
+      type
+    }
+    profile {
+      title
+      firstName
+      lastName
+      avatar
+      gender
+    }
+  }
+}
+
+// prettier-ignore
+mutation {
+  register(
+    input: {
+      username: "t6",
+      email: "t6@gmail.com",
+      password: "12345",
+      phones: [
+        { countryCode: "+33",
+          number: "0612345678", 
+          phonetype: WORK 
+        }
+        { countryCode: "+34", 
+          number: "0634567890", 
+          phonetype: HOME 
+        }
+      ],
+      addresses: [
+        { atype: MAIN,
+          streetName: "Tronchet", 
+          streetNumber: "3",
+          floor: "2nd",
+          city: "Paris",
+          country: "France",
+          postCode: "75008"
+        },
+        { atype: SUBS,
+          city: "Beijing",
+          country: "China",
+          postCode: "100085"
+        }
+      ],
+      profile: {
+        title: "M.",
+        firstName: "Bruce",
+        lastName: "Lee",
+        avatar:"http://api.cloud.com/avatar?id=12345"
+        gender: "Male"
+      }
+    }
+  ) {
+    id
+    username
+    email
+  }
+}
