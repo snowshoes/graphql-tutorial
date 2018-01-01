@@ -12,5 +12,6 @@ export default `
     username: String
     email: String!
     phones: [Phone]!
+    addresses: [Address]!
   }
 `;

@@ -1,5 +1,6 @@
 import mongoose from '../db/connectors';
 import Phone from './phone';
+import Address from './address';
 
 const userSchema = mongoose.Schema(
   {
@@ -13,7 +14,8 @@ const userSchema = mongoose.Schema(
     password: { type: String, required: true },
     // /!\ order matters! 1.ref 2.type
     // https://stackoverflow.com/questions/26511604/adding-field-in-mongoose-plugin-gives-typeerror-invalid-value-for-schema-path
-    phones: [{ ref: 'Phone', type: mongoose.Schema.Types.ObjectId }]
+    phones: [{ ref: 'Phone', type: mongoose.Schema.Types.ObjectId }],
+    addresses: [{ ref: 'Address', type: mongoose.Schema.Types.ObjectId }]
   },
   {
     timestamps: {

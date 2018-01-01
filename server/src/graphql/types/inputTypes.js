@@ -3,6 +3,7 @@ export default `
     username: String
     email: String!
     password: String!
+    addresses: [AddressInput]!
     phones: [PhoneInput]!
   }
 
@@ -15,5 +16,15 @@ export default `
     countryCode: String!
     number: String!
     phonetype: PhoneNumberType!
+  }
+
+  input AddressInput {
+    atype: AddressType!
+    streetName: String
+    streetNumber: String
+    floor: String
+    city: String!
+    country: String!
+    postCode: String!
   }
 `;

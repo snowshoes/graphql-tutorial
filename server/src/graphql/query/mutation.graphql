@@ -67,3 +67,43 @@ mutation {
     email
   }
 }
+
+// prettier-ignore
+mutation {
+  register(
+    input: {
+      username: "t6",
+      email: "t6@gmail.com",
+      password: "12345",
+      phones: [
+        { countryCode: "+33",
+          number: "0612345678", 
+          phonetype: WORK 
+        }
+        { countryCode: "+34", 
+          number: "0634567890", 
+          phonetype: HOME 
+        }
+      ],
+      addresses: [
+        { atype: MAIN,
+          streetName: "Tronchet", 
+          streetNumber: "3",
+          floor: "2nd",
+          city: "Paris",
+          country: "France",
+          postCode: "75008"
+        },
+        { atype: SUBS,
+          city: "Beijing",
+          country: "China",
+          postCode: "100085"
+        }
+      ]
+    }
+  ) {
+    id
+    username
+    email
+  }
+}

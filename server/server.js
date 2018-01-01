@@ -7,6 +7,7 @@ import uuidv4 from 'uuid/v4';
 import schema from './src/graphql/schema';
 import User from './src/models/user';
 import Phone from './src/models/phone';
+import Address from './src/models/address';
 
 const PORT = 4000;
 const SECRET = uuidv4();
@@ -19,7 +20,7 @@ server.use(
   bodyParser.json(),
   graphqlExpress({
     schema,
-    context: { User, Phone }
+    context: { User, Phone, Address }
   })
 );
 
